@@ -4,6 +4,8 @@ import GroupsPage from "./GroupPage"
 import CreateNewGroup from "./CreateNewGroup"
 
 function App() {
+
+
   return (
     <div className="App">
       <Login />

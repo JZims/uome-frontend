@@ -1,10 +1,22 @@
 import React from "react"
 
 
-function BalancesGraph(){
+function BalancesGraph({events}){
 
+    // console.log(events)
 
-    return <div>Balance Graph</div>
+    const populateEventCard = events.map(eventObj => { 
+    return( <ul>
+    <li>Event: {eventObj.name}</li> 
+    <li>Balance: {eventObj.cost}</li>
+    </ul>
+    )})
+
+    return( 
+    <div>   
+    {populateEventCard}
+    </div>
+    )
 }
 
 export default BalancesGraph

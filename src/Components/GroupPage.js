@@ -1,10 +1,9 @@
 import React from "react"
 import GroupCard from "./GroupCard"
 import NewEventForm from "./NewEventForm"
+import CreateNewGroup from "./CreateNewGroup"
 
-
-function GroupsPage({groups}){
-
+function GroupPage({groups}){
 const individualUser = groups.map((userObj) => {
     return(
         <GroupCard 
@@ -14,16 +13,15 @@ const individualUser = groups.map((userObj) => {
         />
     )
 })
-
     return (
-    
-
     <div>
         Groups Page
         {individualUser}
+        <CreateNewGroup /> 
         <NewEventForm />
+        
+    
     </div>
     )
 }
-
-export default GroupsPage
+export default GroupPage

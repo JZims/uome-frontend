@@ -19,7 +19,7 @@ function handleSubmit(e) {
   setUserLogin(e.target.value)
 
 
-
+//Fetches User data embeded with the groups they are in 
 fetch(`http://localhost:4000/user?_embed=groups&name=${userLogin}`)
 .then((r) => r.json())
 .then(userArray => setLoggedInUser(userArray[0]))
@@ -28,9 +28,7 @@ setIsUserLoggedIn(!isUserLoggedIn)
 
 }
 
-// function handleNewEvent(newEvent) {
-//   const updatedEventList = 
-// }
+
 
 
   return (

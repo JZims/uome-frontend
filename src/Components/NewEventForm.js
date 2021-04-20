@@ -1,16 +1,16 @@
 import React, {useState} from "react"
 
-function NewEventForm({onAddNewEvent}){
+function NewEventForm({onAddNewEvent, groupId}){
 const [eventName, setEventName] = useState("")
 const [eventCost, setEventCost] = useState(0)
-const [eventGroupId, setEventGroupId] = useState(0)
+
 
 function handleSubmit(e) {
 e.preventDefault()
 const formData ={
-eventName: eventName,
-eventCost: parseFloat(eventCost),
-eventGroupId: parseFloat(eventGroupId)
+name: eventName,
+cost: parseFloat(eventCost),
+groupId: parseFloat(groupId)
 }
 
 fetch("http://localhost:4000/events", {
@@ -48,13 +48,6 @@ body: JSON.stringify(formData)
           onChange={(e) => setEventCost(e.target.value)}
         />
 
-<input
-          type="number"
-          name="Group"
-          placeholder="Group ID..."
-          value={eventGroupId}
-          onChange={(e) => setEventGroupId(e.target.value)}
-        />
         <button type="submit">Add Event</button>
       </form>
 

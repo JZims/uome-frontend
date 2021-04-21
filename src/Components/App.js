@@ -3,6 +3,7 @@ import Login from "./Login"
 import GroupsPage from "./GroupPage"
 
 
+
 function App() {
 
 const [loggedInUser, setLoggedInUser] = useState(null)
@@ -33,14 +34,12 @@ setIsUserLoggedIn(!isUserLoggedIn)
 
   return (
     <div className="App">
-
-      {loggedInUser ? 
+       {loggedInUser ? 
         <GroupsPage loggedInUser={loggedInUser}/> : 
         <Login setLogin={setUserLogin}
         login={userLogin}
         onHandleSubmit={handleSubmit}/>
-      }
-      
+        } 
       
     </div>
   );

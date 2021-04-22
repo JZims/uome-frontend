@@ -1,27 +1,37 @@
-import React from "react"
+import React, {useState} from "react"
 import GroupCard from "./GroupCard"
-import NewEventForm from "./NewEventForm"
-import CreateNewGroup from "./CreateNewGroup"
 
-function GroupPage({groups}){
-const individualUser = groups.map((userObj) => {
+
+function GroupPage({loggedInUser}){
+
+const [currentBalance, setCurrentBalance] = useState(0)
+
+
+const groupCardArray = loggedInUser.groups.map((groupObj) => {
+
     return(
         <GroupCard 
-        key={userObj.id}
-        name={userObj.name}
-        groups={userObj.groups}
+        key={groupObj.id}
+        name={groupObj.name}
+        id={groupObj.id}
+        setCurrentBalance={setCurrentBalance}
         />
     )
 })
+
+
+
     return (
     <div>
-        Groups Page
-        {individualUser}
-        <CreateNewGroup /> 
-        <NewEventForm />
+        <h3>{loggedInUser.name}</h3>
+        Total Balance: {parseInt(currentBalance)}
+        <ul>
+            
+        {groupCardArray}
         
-    
+        </ul>
+
     </div>
-    )
+)
 }
 export default GroupPage

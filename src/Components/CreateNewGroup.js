@@ -3,10 +3,7 @@ import "../index.css"
 import { Button, Input } from 'semantic-ui-react'
 function CreateNewGroup({userId, setNewGroupObj}){
 
-// the Id of the current user (state passed down)
-// form that takes a user name and plugs in the Id
-// POSt request to add the new group
-// send the new object back up to group array to populate dynamically 
+
 const [groupName, setGroupName] = useState("")
 
 const newGroupData = {

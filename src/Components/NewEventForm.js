@@ -13,7 +13,7 @@ e.preventDefault()
 
 const formData ={
 name: eventName,
-cost: +parseFloat(eventCost).toFixed(2),
+cost: parseFloat(eventCost).toFixed(2),
 groupId: parseInt(groupId)
 
 }
@@ -60,10 +60,10 @@ return (
           type="number"
           step=".50"
           min="0.00"
-          name={+parseFloat(eventCost).toFixed(2)}
+          name={parseFloat(eventCost).toFixed(2)}
           placeholder="Cost of Event (in dollars)..."
-          value={+parseFloat(eventCost).toFixed(2)}
-          onChange={(e) => setEventCost(+parseFloat(e.target.value).toFixed(2))}
+          value={parseFloat(eventCost).toFixed(2)}
+          onChange={(e) => setEventCost(parseFloat(e.target.value).toFixed(2))}
         />
         <br></br>
         <Button color='green'type="submit">Add Favor</Button>

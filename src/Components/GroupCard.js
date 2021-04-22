@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from "react"
-// import BalancesGraph from "./BalancesGraph"
+import { Button, Input } from 'semantic-ui-react'
 import NewEventForm from "./NewEventForm"
 import "../index.css"
 
 
-function GroupCard({name, id, setCurrentBalance}){
+function GroupCard({name, id, setCurrentBalance, setGroupDeleteId}){
 
 
 
@@ -56,8 +56,22 @@ function handleDeleteEvent(id){
 
 }
 
+function handleDeleteGroup(id){
+
+    setGroupDeleteId(id)
+
+    fetch(`http://localhost:4000/groups/${id}`, {
+        method: "DELETE", 
+        headers: {
+            "Content-Type": "application/json"
+        } 
+    })
+
+}
+
 
 const arrayOfEvents = listOfGroupEvents.map((eventObj) => { 
+
     
     return( 
     <div>
@@ -69,13 +83,20 @@ const arrayOfEvents = listOfGroupEvents.map((eventObj) => {
 )
 })
 
+const totalBalance = arrayOfEvents.reduce((sum, eachEvent) => {
+    return eachEvent.cost + sum
+},0)
+
+console.log(totalBalance)
 
 
     return (
     <li className="card">
         <h4>{name}</h4>
+        <h6>Total Owed:</h6>
         {arrayOfEvents}    
         <NewEventForm groupName={name} onAddNewEvent={handleNewEvent} groupId={id} />
+        <Button color='red 'type="submit" onClick={() => handleDeleteGroup(id)}>Forgive All Debts for {name}</Button>
     </li>
     
     )

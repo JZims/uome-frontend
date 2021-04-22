@@ -6,11 +6,23 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+
+.favors {
+  overflow: auto;
+  white-space: nowrap;
+}
+
 body {
   background: #9C81C9;
   height: 100%;
   font-family: arial;
   text-align: center;
+}
+
+#root .nameOnCard {
+  font-family: 'Bitter', serif;
+  background-color: rgb(140, 18, 151);
 }
 
 code {
@@ -19,14 +31,13 @@ code {
 }
 
 
-  .card {
+  #root .ui.card {
   
-    display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 30%;
-    text-align: center;
+  
     background-color: thistle;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  display: inline-block;
     
   }
 
@@ -35,5 +46,21 @@ code {
     font-family: 'Brush Script MT', cursive;
   }
   
+#root .ui.header {
+  font-family: 'Bitter', serif;
+}
 
+.nameOnCard {
+  font-family: 'Bitter', serif;
+  background-color: blue;
+}
   
+#root .nameOnCard {
+  background-color: 'blue';
+}
+
+.ui.card.group {
+  overflow: auto;
+  white-space: nowrap;
+}
+

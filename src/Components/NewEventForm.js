@@ -65,7 +65,7 @@ setEventName("")
           onChange={(e) => setEventCost(+parseFloat(e.target.value).toFixed(2))}
         />
         <br></br>
-        <Button color='green'type="submit">Add Event</Button>
+        <Button color='green'type="submit">Add Favor</Button>
       </form>
 
     </div>

@@ -1,6 +1,7 @@
 import React, {useState} from "react"
 import GroupCard from "./GroupCard"
 import "../index.css"
+import {Card} from "semantic-ui-react"
 
 function GroupPage({loggedInUser}){
 
@@ -23,14 +24,15 @@ const groupCardArray = loggedInUser.groups.map((groupObj) => {
 
     return (
     <div>
+    
         <h3>Hello {loggedInUser.name}! These are all the dirtbags who owe you money!</h3>
         <h2 className="pageHeader">Enemies List</h2>
         Total Balance: {parseInt(currentBalance)}
-        <ul>
+        <Card.Group>
             
         {groupCardArray}
         
-        </ul>
+        </Card.Group>
 
     </div>
 )

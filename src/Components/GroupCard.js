@@ -2,12 +2,13 @@ import React, {useState, useEffect} from "react"
 // import BalancesGraph from "./BalancesGraph"
 import NewEventForm from "./NewEventForm"
 import "../index.css"
-
+import {Card, Button, List} from 'semantic-ui-react'
 
 function GroupCard({name, id, setCurrentBalance}){
 
 
 const [listOfGroupEvents, setListOfGroupEvents] = useState([])
+const [isAddFavorButtonShowing, setIsAddFavorButtonShowing] = useState(false)
 
 
 //Fetches group data with events attached according to the groups the users they are associated with
@@ -63,23 +64,39 @@ function handleDeleteEvent(id){
 const arrayOfEvents = listOfGroupEvents.map((eventObj) => { 
     
     return( 
-    <div>
-        <h5>Event: {eventObj.name}</h5>
+    <List divided verticalAlign='middle' className="favors">
+        <List.Content floated='left'>
+        
+        <List.Header><h3>Favor: {eventObj.name}</h3></List.Header>
+       
         <p>Balance: ${eventObj.cost}</p>
-        <button onClick={() => handleDeleteEvent(eventObj.id)}>Delete Event</button>
-    </div>
+        </List.Content>
+        <List.Content floated='right'>
+        <Button className="deleteButton" inverted color='red' onClick={() => handleDeleteEvent(eventObj.id)}>Forgive Debt</Button>
+        </List.Content>
+    </List>
     
 )
 })
 
+function handleAddFavorForm() {
+    return(
+        setIsAddFavorButtonShowing(!isAddFavorButtonShowing)
+    )
+}
+
 
 
     return (
-    <li className="card">
-        <h4>{name}</h4>
-        {arrayOfEvents}    
-        <NewEventForm groupName={name} onAddNewEvent={handleNewEvent} groupId={id} />
-    </li>
+    <Card color="blue" className="card">
+        <h2 className="nameOnCard">{name}</h2>
+        <Card.Content color="red">
+        {arrayOfEvents} 
+        </Card.Content>
+        <Button toggle onClick={handleAddFavorForm}>Add favor</Button>
+        {isAddFavorButtonShowing ? (<NewEventForm groupName={name} onAddNewEvent={handleNewEvent} groupId={id} />) : 
+        null}
+    </Card>
     
     )
 

@@ -2,15 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './Components/App';
-import { BrowserRouter } from "react-router-dom"
+import 'semantic-ui-css/semantic.min.css'
+
 
 
 ReactDOM.render(
-  <BrowserRouter>
-    <React.StrictMode>
+  
+  <React.StrictMode>
     <App />
-    </React.StrictMode>
-  </BrowserRouter>,
+  </React.StrictMode>,
   document.getElementById('root')
 );
 

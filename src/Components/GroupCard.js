@@ -1,10 +1,11 @@
 import React, {useState, useEffect} from "react"
 // import BalancesGraph from "./BalancesGraph"
 import NewEventForm from "./NewEventForm"
-
+import "../index.css"
 
 
 function GroupCard({name, id, setCurrentBalance}){
+
 
 
 const [listOfGroupEvents, setListOfGroupEvents] = useState([])
@@ -22,10 +23,6 @@ useEffect(() => {
         setCurrentBalance(totalBalance)
     })
 },[id] )
-
-
-
-
 
 
 function handleNewEvent(newEvent){
@@ -75,7 +72,7 @@ const arrayOfEvents = listOfGroupEvents.map((eventObj) => {
 
 
     return (
-    <li>
+    <li className="card">
         <h4>{name}</h4>
         {arrayOfEvents}    
         <NewEventForm groupName={name} onAddNewEvent={handleNewEvent} groupId={id} />

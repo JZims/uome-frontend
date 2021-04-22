@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react"
 // import BalancesGraph from "./BalancesGraph"
 import NewEventForm from "./NewEventForm"
-
+import "../index.css"
 
 
 function GroupCard({name, id}){
@@ -69,7 +69,7 @@ const arrayOfEvents = listOfGroupEvents.map((eventObj) => {
 console.log(totalBalance)
 
     return (
-    <li>
+    <li className="card">
         <h4>{name}</h4>
         {arrayOfEvents}
     

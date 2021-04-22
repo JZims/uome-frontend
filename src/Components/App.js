@@ -1,6 +1,8 @@
 import React, { useState } from "react"
 import Login from "./Login"
 import GroupsPage from "./GroupPage"
+import HeaderOfPage from "./Header"
+import "../index.css"
 
 
 
@@ -34,6 +36,7 @@ setIsUserLoggedIn(!isUserLoggedIn)
 
   return (
     <div className="App">
+      <HeaderOfPage  />
        {loggedInUser ? 
         <GroupsPage loggedInUser={loggedInUser}/> : 
         <Login setLogin={setUserLogin}

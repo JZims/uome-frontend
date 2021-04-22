@@ -2,7 +2,7 @@ import React, {useState} from "react"
 
 function NewEventForm({onAddNewEvent, groupId, groupName}){
 const [eventName, setEventName] = useState("")
-const [eventCost, setEventCost] = useState("")
+const [eventCost, setEventCost] = useState(null)
 
 
 function handleSubmit(e) {
@@ -11,7 +11,7 @@ e.preventDefault()
 
 const formData ={
 name: eventName,
-cost: parseFloat(eventCost).toFixed(2),
+cost: +parseFloat(eventCost).toFixed(2),
 groupId: parseInt(groupId)
 
 }
@@ -56,10 +56,10 @@ setEventName("")
           type="number"
           step=".50"
           min="0.00"
-          name={parseFloat(eventCost).toFixed(2)}
+          name={+parseFloat(eventCost).toFixed(2)}
           placeholder="Cost of Event (in dollars)..."
-          value={eventCost}
-          onChange={(e) => setEventCost(parseFloat(e.target.value))}
+          value={+parseFloat(eventCost).toFixed(2)}
+          onChange={(e) => setEventCost(+parseFloat(e.target.value).toFixed(2))}
         />
 
         <button type="submit">Add Event</button>

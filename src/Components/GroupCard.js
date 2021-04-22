@@ -4,24 +4,23 @@ import NewEventForm from "./NewEventForm"
 
 
 
-function GroupCard({name, id}){
+function GroupCard({name, id, setCurrentBalance}){
 
 
 const [listOfGroupEvents, setListOfGroupEvents] = useState([])
 
-//non-state array to hold numbers that will be added together with .reduce method
-const totalBalance = []
 
-// function handleCheckBalance(){
-//     setBalanceShowing(!balanceShowing)
-    
-// }
-
-//Fetches group data with events attached according to the groups the users are associated with
+//Fetches group data with events attached according to the groups the users they are associated with
 useEffect(() => {
     fetch(`http://localhost:4000/groups/${id}/events`)
     .then((r) => r.json())
-    .then(eventArr => setListOfGroupEvents(eventArr))
+    .then(eventArr => {
+        setListOfGroupEvents(eventArr)
+        const totalBalance = eventArr.reduce((sum, eachEvent) => {
+            return eachEvent.cost + sum
+        },0)
+        setCurrentBalance(totalBalance)
+    })
 },[id] )
 
 
@@ -32,6 +31,11 @@ useEffect(() => {
 function handleNewEvent(newEvent){
     const updatedEventList = [...listOfGroupEvents, newEvent]
     setListOfGroupEvents(updatedEventList)
+
+    const totalBalance = updatedEventList.reduce((sum, eachEvent) => {
+        return eachEvent.cost + sum
+    },0)
+    setCurrentBalance(totalBalance)
   }
 
 
@@ -45,16 +49,19 @@ function handleDeleteEvent(id){
     })
     const arrayAfterDelete = listOfGroupEvents.filter(eventObj => eventObj.id !== id)
 
-    setListOfGroupEvents(arrayAfterDelete)
+    const totalBalance = arrayAfterDelete.reduce((sum, eachEvent) => {
+        return eachEvent.cost + sum
+    },0)
 
-     
+    setListOfGroupEvents(arrayAfterDelete)
+    setCurrentBalance(totalBalance)
+
+
 }
 
 
 const arrayOfEvents = listOfGroupEvents.map((eventObj) => { 
-    //attempting to take a total balance by adding each cost value
-    //state will need to be held in GroupPage somehow
-    totalBalance.push(eventObj.cost)
+    
     return( 
     <div>
         <h5>Event: {eventObj.name}</h5>
@@ -66,16 +73,11 @@ const arrayOfEvents = listOfGroupEvents.map((eventObj) => {
 })
 
 
-console.log(totalBalance)
 
     return (
     <li>
         <h4>{name}</h4>
-        {arrayOfEvents}
-    
-        {/* <button onClick={handleCheckBalance}>{balanceShowing ? "Hide Balance":"Check Balance"}</button>
-         {balanceShowing ? <BalancesGraph events={listOfGroupEvents} /> : null} */}
-          
+        {arrayOfEvents}    
         <NewEventForm groupName={name} onAddNewEvent={handleNewEvent} groupId={id} />
     </li>
     

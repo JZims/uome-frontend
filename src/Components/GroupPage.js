@@ -1,8 +1,10 @@
-import React from "react"
+import React, {useState} from "react"
 import GroupCard from "./GroupCard"
 
 
 function GroupPage({loggedInUser}){
+
+const [currentBalance, setCurrentBalance] = useState(0)
 
 
 const groupCardArray = loggedInUser.groups.map((groupObj) => {
@@ -12,15 +14,17 @@ const groupCardArray = loggedInUser.groups.map((groupObj) => {
         key={groupObj.id}
         name={groupObj.name}
         id={groupObj.id}
+        setCurrentBalance={setCurrentBalance}
         />
     )
 })
 
 
+
     return (
     <div>
         <h3>{loggedInUser.name}</h3>
-        Groups Page
+        Total Balance: {parseInt(currentBalance)}
         <ul>
             
         {groupCardArray}

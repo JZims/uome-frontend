@@ -100,9 +100,9 @@ const totalBalance = arrayOfEvents.reduce((sum, eachEvent) => {
 
 
     return (
-    <Card color="blue" className="card">
+    <Card fluid color="blue" className="card">
         <h2 className="nameOnCard">{name}</h2>
-        <Card.Content color="red">
+        <Card.Content fluid color="red">
         {arrayOfEvents} 
         </Card.Content>
         <Button toggle onClick={handleAddFavorForm}>Add favor</Button>

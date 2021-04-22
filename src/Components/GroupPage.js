@@ -3,7 +3,7 @@ import StappyHour from "./StappyHour"
 import GroupCard from "./GroupCard"
 import CreateNewGroup from "./CreateNewGroup"
 import "../index.css"
-import {Card} from "semantic-ui-react"
+import {Container} from "semantic-ui-react"
 import {Link, Route, Switch} from "react-router-dom"
 
 
@@ -21,7 +21,6 @@ const filterArrayForEmptyObj = userArrayAfterGroupAdd.filter(groupObj => {
     if(groupObj.name)
         return true 
 })
-
 
 const userArrayAfterGroupDelete = filterArrayForEmptyObj.filter(groupObj => groupObj.id !== groupDeleteId)
 
@@ -52,10 +51,10 @@ const groupCardArray = userArrayAfterGroupDelete.map((groupObj) => {
             <h2 className="pageHeader">Enemies List</h2>
             Total Balance: {parseInt(currentBalance)}
             <ul>
-            <Card.Group>
+            <Container fluid>
             
                 {groupCardArray}
-        </Card.Group>
+        </Container>
             </ul>
             </Route>
             <Route exact path="/bored">

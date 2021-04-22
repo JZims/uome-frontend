@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from "react"
-// import BalancesGraph from "./BalancesGraph"
 import NewEventForm from "./NewEventForm"
 import "../index.css"
-import {Card, Button, List} from 'semantic-ui-react'
+import {Card, Button, List, Input} from 'semantic-ui-react'
 
-function GroupCard({name, id, setCurrentBalance}){
+function GroupCard({name, id, setCurrentBalance, setGroupDeleteId}){
+
 
 
 const [listOfGroupEvents, setListOfGroupEvents] = useState([])
@@ -23,10 +23,6 @@ useEffect(() => {
         setCurrentBalance(totalBalance)
     })
 },[id] )
-
-
-
-
 
 
 function handleNewEvent(newEvent){
@@ -60,8 +56,22 @@ function handleDeleteEvent(id){
 
 }
 
+function handleDeleteGroup(id){
+
+    setGroupDeleteId(id)
+
+    fetch(`http://localhost:4000/groups/${id}`, {
+        method: "DELETE", 
+        headers: {
+            "Content-Type": "application/json"
+        } 
+    })
+
+}
+
 
 const arrayOfEvents = listOfGroupEvents.map((eventObj) => { 
+
     
     return( 
     <List divided verticalAlign='middle' className="favors">
@@ -84,7 +94,9 @@ function handleAddFavorForm() {
         setIsAddFavorButtonShowing(!isAddFavorButtonShowing)
     )
 }
-
+const totalBalance = arrayOfEvents.reduce((sum, eachEvent) => {
+    return eachEvent.cost + sum
+},0)
 
 
     return (
@@ -96,11 +108,9 @@ function handleAddFavorForm() {
         <Button toggle onClick={handleAddFavorForm}>Add favor</Button>
         {isAddFavorButtonShowing ? (<NewEventForm groupName={name} onAddNewEvent={handleNewEvent} groupId={id} />) : 
         null}
+         <Button color='red 'type="submit" onClick={() => handleDeleteGroup(id)}>Forgive All Debts for {name}</Button>
     </Card>
-    
     )
-
-
-
 }
+
 export default GroupCard

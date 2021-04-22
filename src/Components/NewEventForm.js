@@ -44,7 +44,8 @@ setEventName("")
 }
 
 
-    return <div classname="new-event-form">
+return (
+    <div classname="new-event-form">
         <h6>Create New Event for {groupName}</h6>
         <form onSubmit={handleSubmit}>
         <Input
@@ -69,6 +70,6 @@ setEventName("")
       </form>
 
     </div>
-}
+    )}
 
 export default NewEventForm

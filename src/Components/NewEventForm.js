@@ -1,9 +1,6 @@
 import React, {useState} from "react"
-<<<<<<< HEAD
-=======
 import { Button, Input } from 'semantic-ui-react'
 import "../index.css"
->>>>>>> 8bd4a6b018ac553a56f2a4b6d05ad7b8bed27c2d
 
 function NewEventForm({onAddNewEvent, groupId, groupName}){
 const [eventName, setEventName] = useState("")
@@ -50,23 +47,15 @@ setEventName("")
     return <div classname="new-event-form">
         <h6>Create New Event for {groupName}</h6>
         <form onSubmit={handleSubmit}>
-<<<<<<< HEAD
-        <input
-=======
         <Input
->>>>>>> 8bd4a6b018ac553a56f2a4b6d05ad7b8bed27c2d
           type="text"
           name={eventName}
           placeholder="Enter Event Name..."
           value={eventName}
           onChange={(e) => setEventName(e.target.value)}
         />
-<<<<<<< HEAD
-        <input
-=======
         <br></br>
         <Input
->>>>>>> 8bd4a6b018ac553a56f2a4b6d05ad7b8bed27c2d
           type="number"
           step=".50"
           min="0.00"
@@ -75,13 +64,8 @@ setEventName("")
           value={+parseFloat(eventCost).toFixed(2)}
           onChange={(e) => setEventCost(+parseFloat(e.target.value).toFixed(2))}
         />
-<<<<<<< HEAD
-
-        <button type="submit">Add Event</button>
-=======
         <br></br>
         <Button color='green'type="submit">Add Event</Button>
->>>>>>> 8bd4a6b018ac553a56f2a4b6d05ad7b8bed27c2d
       </form>
 
     </div>

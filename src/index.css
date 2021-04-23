@@ -85,3 +85,9 @@ code {
     z-index: -1;
   
 }
+
+.groupPage {
+  
+  display: inline-block;
+  flex-wrap: wrap;
+}

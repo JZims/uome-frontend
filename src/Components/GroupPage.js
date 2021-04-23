@@ -7,9 +7,10 @@ import {Container} from "semantic-ui-react"
 import {Link, Route, Switch} from "react-router-dom"
 
 
+
 function GroupPage({loggedInUser}){
 
-const [currentBalance, setCurrentBalance] = useState(0)
+
 const [newGroupObj, setNewGroupObj] = useState({})
 const [groupDeleteId, setGroupDeleteId] = useState(0)
 
@@ -34,7 +35,6 @@ const groupCardArray = userArrayAfterGroupDelete.map((groupObj) => {
         key={groupObj.id}
         name={groupObj.name}
         id={groupObj.id}
-        setCurrentBalance={setCurrentBalance}
         setGroupDeleteId={setGroupDeleteId}
         />
     )
@@ -44,13 +44,13 @@ const groupCardArray = userArrayAfterGroupDelete.map((groupObj) => {
     return (
     <div>
     
-        <h3>Hello {loggedInUser.name}! These are all the dirtbags who owe you money!</h3>
+        <h3>Hey, {loggedInUser.name}! Time to get that bread!</h3>
         
         <Switch>
             <Route exact path="/">
             <h2 className="pageHeader">Enemies List</h2>
-            Total Balance: {parseInt(currentBalance)}
-            <ul>
+            
+            <ul className='groupPage'>
             <Container fluid>
             
                 {groupCardArray}
@@ -65,9 +65,9 @@ const groupCardArray = userArrayAfterGroupDelete.map((groupObj) => {
             </Route>
         </Switch>
 
-        <Link to={"/"}>List of dirtbags</Link>
+        <Link to={"/"}>List of Dirtbags</Link>
         <br></br>
-        <Link to={"/createNew"}>Add a new subject</Link>
+        <Link to={"/createNew"}>Add a new Dirtbag</Link>
         <br></br>
         <Link to={"/bored"}>This is Boring.</Link>
         

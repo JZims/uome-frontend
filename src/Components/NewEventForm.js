@@ -44,8 +44,7 @@ setEventName("")
 }
 
 
-return (
-    <div classname="new-event-form">
+    return <div classname="new-event-form">
         <h6>Create New Event for {groupName}</h6>
         <form onSubmit={handleSubmit}>
         <Input
@@ -58,18 +57,18 @@ return (
         <br></br>
         <Input
           type="number"
-          step=".50"
-          min="0.00"
-          name={+parseFloat(eventCost).toFixed(2)}
-          placeholder="Cost of Event (in dollars)..."
-          value={+parseFloat(eventCost).toFixed(2)}
-          onChange={(e) => setEventCost(+parseFloat(e.target.value).toFixed(2))}
+          // step=".50"
+          // min="0.00"
+          name={+parseFloat(eventCost)}
+          placeholder="Cost of Favor (in dollars)..."
+          value={+parseFloat(eventCost)}
+          onChange={(e) => setEventCost(+parseFloat(e.target.value))}
         />
         <br></br>
         <Button color='green'type="submit">Add Favor</Button>
       </form>
 
     </div>
-    )}
+}
 
 export default NewEventForm

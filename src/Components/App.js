@@ -42,7 +42,7 @@ setIsUserLoggedIn(!isUserLoggedIn)
        {loggedInUser ? 
         <>
         <GroupsPage className= "groupPage" loggedInUser={loggedInUser}/> 
-        <NavBar />
+        {/* <NavBar className="nav"/> */}
         </>
         : 
         <Login setLogin={setUserLogin}

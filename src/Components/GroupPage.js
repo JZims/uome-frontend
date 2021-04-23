@@ -5,6 +5,7 @@ import CreateNewGroup from "./CreateNewGroup"
 import "../index.css"
 import {Container} from "semantic-ui-react"
 import {Link, Route, Switch} from "react-router-dom"
+import NavBar from "./NavBar"
 
 
 
@@ -42,34 +43,34 @@ const groupCardArray = userArrayAfterGroupDelete.map((groupObj) => {
 
 
     return (
-    <div>
+    <div className='groupPage'>
     
-        <h3>Hey, {loggedInUser.name}! Time to get that bread!</h3>
+        
         
         <Switch>
             <Route exact path="/">
+            <h3>Hey, {loggedInUser.name}! Time to get that bread!</h3>
             <h2 className="pageHeader">Enemies List</h2>
-            
             <ul className='groupPage'>
-            <Container fluid>
-            
+            <Container >
                 {groupCardArray}
-        </Container>
+            </Container>
             </ul>
             </Route>
             <Route exact path="/bored">
                 <StappyHour/>
             </Route>
-            <Route exact path="/">
+            <Route exact path="/addNew">
                 <CreateNewGroup userId={loggedInUser.id} setNewGroupObj= {setNewGroupObj}/>
             </Route>
         </Switch>
-
-        <Link to={"/enemieslist"}>List of Dirtbags</Link>
+        <NavBar/>
+        {/* <Link to={"/"}>List of Dirtbags</Link>
         <br></br>
-        <Link to={"/"}>Add a new Dirtbag</Link>
+        <Link to={"/addNew"}>Add a new Dirtbag</Link>
         <br></br>
         <Link to={"/bored"}>This is Boring.</Link>
+        */}
         
         
 

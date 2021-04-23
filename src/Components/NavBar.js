@@ -1,38 +1,42 @@
 import React from 'react'
-import { Header, Icon, Image, Menu, Segment, Sidebar } from 'semantic-ui-react'
+import { NavLink } from "react-router-dom";
 
-const SidebarExampleVisible = () => (
+const linkStyles = {
+    width: "100px",
+    padding: "12px",
+    margin: "0 6px 6px",
+    background: "thistle",
+    textDecoration: "none",
+    color: "white",
+  };
+  
+
+function NavBar() {
+return (
     <div className="nav">
-  <Sidebar.Pushable as={Segment}>
-    <Sidebar
-      as={Menu}
-      animation='overlay'
-      icon='labeled'
-      inverted
-      vertical
-      visible
-      width='thin'
-    >
-      <Menu.Item as='a'>
-        <Icon name='home' />
-        Home
-      </Menu.Item>
-      <Menu.Item as='a'>
-        <Icon name='gamepad' />
-        Games
-      </Menu.Item>
-      <Menu.Item as='a'>
-        <Icon name='camera' />
-        Channels
-      </Menu.Item>
-    </Sidebar>
+        <NavLink 
+            exact to="/"
+            style={linkStyles} 
+            activeStyle ={{background: "purple"}}>
+            List of Dirtbags</NavLink>
 
-    <Sidebar.Pusher>
-      <Segment basic>
-      </Segment>
-    </Sidebar.Pusher>
-  </Sidebar.Pushable>
-  </div>
+            <NavLink
+            to="/bored" exact
+            style={linkStyles} 
+            activeStyle ={{background: "purple"}}>
+            Getting Bored?
+            </NavLink>
+
+            <NavLink
+            to="/addNew" exact
+            style={linkStyles} 
+            activeStyle ={{background: "purple"}}>
+            Add New DirtBag
+            </NavLink>
+            
+    
+        </div>
 )
+}
 
-export default SidebarExampleVisible
+export default NavBar

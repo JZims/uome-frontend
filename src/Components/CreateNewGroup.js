@@ -5,10 +5,12 @@ function CreateNewGroup({userId, setNewGroupObj}){
 
 
 const [groupName, setGroupName] = useState("")
+const [number, setNumber] = useState("")
 
 const newGroupData = {
     name: groupName, 
-    userId: userId
+    userId: userId,
+    number: number
 }
 
 function handleNewGroupSubmit(e){
@@ -25,6 +27,7 @@ e.preventDefault()
     .then(newGroupObj => setNewGroupObj(newGroupObj))
 
     setGroupName("")
+    setNumber("")
 }
 
 
@@ -39,6 +42,14 @@ return (
           placeholder="Enter Name..."
           value={groupName}
           onChange={(e) => setGroupName(e.target.value)}
+        />
+
+      <Input
+          type="text"
+          name={number}
+          placeholder="Enter Phone Number..."
+          value={number}
+          onChange={(e) => setNumber(e.target.value)}
         />
         <Button color='green'type="submit">Add "Friend"</Button>
         </form>

@@ -50,11 +50,11 @@ function handleDeleteEvent(id){
 
     setListOfGroupEvents(arrayAfterDelete)
 
-    const deletedObj = listOfGroupEvents.filter(eventObj => eventObj.id === id)
+    const deletedObj = listOfGroupEvents.find(eventObj => eventObj.id === id)
     const numberToSubtract = deletedObj.cost
-
+    debugger
      setTotalOwed(totalOwed - numberToSubtract)
-    console.log(listOfGroupEvents)
+    console.log(deletedObj)
 
     }
     
@@ -101,10 +101,10 @@ function handleAddFavorForm() {
 
 
     return (
-    <Card color="blue" className="card">
+    <Card fluid color="blue" className="card">
         <h2 className="nameOnCard">{name}</h2>
+        <Card.Content fluid color="red">
         <h6>Total Owed: ${totalOwed} </h6>
-        <Card.Content color="red">
         {arrayOfEvents} 
         </Card.Content>
         <Button toggle onClick={handleAddFavorForm}>Add favor</Button>

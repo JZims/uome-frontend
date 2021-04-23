@@ -6,6 +6,8 @@ import React from 'react'
     return (
         <div>
             <iframe width="560" height="315" src={creedVids[vidIndex]} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            Stappy Hour
+        <img className='stappyHour' src={"https://s.abcnews.com/images/US/creed-1999-gty-jc-190712_hpEmbed_16x11_992.jpg"}/>
         </div>
     )
 }

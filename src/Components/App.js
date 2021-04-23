@@ -3,6 +3,7 @@ import Login from "./Login"
 import GroupsPage from "./GroupPage"
 import HeaderOfPage from "./Header"
 import "../index.css"
+import NavBar from "./NavBar"
 
 
 
@@ -39,7 +40,11 @@ setIsUserLoggedIn(!isUserLoggedIn)
     <div className="App">
       <HeaderOfPage  />
        {loggedInUser ? 
-        <GroupsPage loggedInUser={loggedInUser}/> : 
+        <>
+        <GroupsPage className= "groupPage" loggedInUser={loggedInUser}/> 
+        <NavBar />
+        </>
+        : 
         <Login setLogin={setUserLogin}
         login={userLogin}
         onHandleSubmit={handleSubmit}/>

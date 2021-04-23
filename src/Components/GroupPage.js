@@ -3,8 +3,9 @@ import StappyHour from "./StappyHour"
 import GroupCard from "./GroupCard"
 import CreateNewGroup from "./CreateNewGroup"
 import "../index.css"
-import {Card} from "semantic-ui-react"
+import {Container} from "semantic-ui-react"
 import {Link, Route, Switch} from "react-router-dom"
+
 
 
 function GroupPage({loggedInUser}){
@@ -21,7 +22,6 @@ const filterArrayForEmptyObj = userArrayAfterGroupAdd.filter(groupObj => {
     if(groupObj.name)
         return true 
 })
-
 
 const userArrayAfterGroupDelete = filterArrayForEmptyObj.filter(groupObj => groupObj.id !== groupDeleteId)
 
@@ -47,13 +47,15 @@ const groupCardArray = userArrayAfterGroupDelete.map((groupObj) => {
         <h3>Hey, {loggedInUser.name}! Time to get that bread!</h3>
         
         <Switch>
-            <Route exact path="/enemieslist">
-                <h2 className="pageHeader">Enemies List</h2>
-                <ul>
-                    <Card.Group>
-                    {groupCardArray}
-                    </Card.Group>
-                </ul>
+            <Route exact path="/">
+            <h2 className="pageHeader">Enemies List</h2>
+            
+            <ul className='groupPage'>
+            <Container fluid>
+            
+                {groupCardArray}
+        </Container>
+            </ul>
             </Route>
             <Route exact path="/bored">
                 <StappyHour/>

@@ -47,27 +47,25 @@ const groupCardArray = userArrayAfterGroupDelete.map((groupObj) => {
         <h3>Hey, {loggedInUser.name}! Time to get that bread!</h3>
         
         <Switch>
-            <Route exact path="/">
-            <h2 className="pageHeader">Enemies List</h2>
-            
-            <ul>
-            <Card.Group>
-            
-                {groupCardArray}
-        </Card.Group>
-            </ul>
+            <Route exact path="/enemieslist">
+                <h2 className="pageHeader">Enemies List</h2>
+                <ul>
+                    <Card.Group>
+                    {groupCardArray}
+                    </Card.Group>
+                </ul>
             </Route>
             <Route exact path="/bored">
                 <StappyHour/>
             </Route>
-            <Route path="/createnew">
+            <Route exact path="/">
                 <CreateNewGroup userId={loggedInUser.id} setNewGroupObj= {setNewGroupObj}/>
             </Route>
         </Switch>
 
-        <Link to={"/"}>List of Dirtbags</Link>
+        <Link to={"/enemieslist"}>List of Dirtbags</Link>
         <br></br>
-        <Link to={"/createNew"}>Add a new Dirtbag</Link>
+        <Link to={"/"}>Add a new Dirtbag</Link>
         <br></br>
         <Link to={"/bored"}>This is Boring.</Link>
         

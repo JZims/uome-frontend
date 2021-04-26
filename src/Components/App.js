@@ -25,7 +25,7 @@ function handleSubmit(e) {
 
 
 //Fetches User data embeded with the groups they are in 
-fetch(`http://localhost:4000/user?_embed=groups&name=${userLogin}`)
+fetch(`https://uome-backend.herokuapp.com/user?_embed=groups&name=${userLogin}`)
 .then((r) => r.json())
 .then(userArray => setLoggedInUser(userArray[0]))
 

@@ -24,7 +24,7 @@ if(!formData.name){
     return alert("Consider ALL the costs, please.")
 }
 
-fetch("http://localhost:4000/events", {
+fetch("https://uome-backend.herokuapp.com/events", {
 method: "POST",
 headers: {
     "Content-Type": "application/json"

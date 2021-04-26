@@ -1,4 +1,4 @@
-import react from "react"
+import React from "react"
 import {Header} from 'semantic-ui-react'
 import "../index.css"
 function HeaderOfPage(){

@@ -16,7 +16,7 @@ const newGroupData = {
 function handleNewGroupSubmit(e){
 e.preventDefault()
 
-    fetch(`http://localhost:4000/groups`, {
+    fetch(`https://uome-backend.herokuapp.com/groups`, {
         method:"POST", 
         headers: {
             "Content-Type": "application/JSON"

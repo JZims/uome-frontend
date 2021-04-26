@@ -22,6 +22,7 @@ const userArrayAfterGroupAdd = [...loggedInUser.groups, newGroupObj]
 const filterArrayForEmptyObj = userArrayAfterGroupAdd.filter(groupObj => {
     if(groupObj.name)
         return true 
+    else return false
 })
 
 const userArrayAfterGroupDelete = filterArrayForEmptyObj.filter(groupObj => groupObj.id !== groupDeleteId)

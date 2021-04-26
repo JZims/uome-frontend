@@ -3,7 +3,7 @@ import Login from "./Login"
 import GroupsPage from "./GroupPage"
 import HeaderOfPage from "./Header"
 import "../index.css"
-import NavBar from "./NavBar"
+// import NavBar from "./NavBar"
 
 
 

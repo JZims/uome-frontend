@@ -4,7 +4,7 @@ import GroupCard from "./GroupCard"
 import CreateNewGroup from "./CreateNewGroup"
 import "../index.css"
 import {Container} from "semantic-ui-react"
-import {Link, Route, Switch} from "react-router-dom"
+import { Route, Switch} from "react-router-dom"
 import NavBar from "./NavBar"
 
 
@@ -22,6 +22,7 @@ const userArrayAfterGroupAdd = [...loggedInUser.groups, newGroupObj]
 const filterArrayForEmptyObj = userArrayAfterGroupAdd.filter(groupObj => {
     if(groupObj.name)
         return true 
+    else return false
 })
 
 const userArrayAfterGroupDelete = filterArrayForEmptyObj.filter(groupObj => groupObj.id !== groupDeleteId)

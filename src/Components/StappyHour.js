@@ -9,7 +9,7 @@ import React from 'react'
         <div className="stapVid">
         
             <iframe width="560" height="315" src={creedVids[vidIndex]} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        <img className='stappyHour' src={"https://s.abcnews.com/images/US/creed-1999-gty-jc-190712_hpEmbed_16x11_992.jpg"}/>
+        <img className='stappyHour' src={"https://s.abcnews.com/images/US/creed-1999-gty-jc-190712_hpEmbed_16x11_992.jpg"} alt="random Creed vids"/>
         </div>
         <h1 className='stappHeader2'>STAPPY HOUR!!!!!!!!!</h1>
         </>

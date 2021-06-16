@@ -13,7 +13,11 @@ const [isAddFavorButtonShowing, setIsAddFavorButtonShowing] = useState(false)
 
 //Fetches group data with events attached according to the groups the users they are associated with
 useEffect(() => {
+<<<<<<< HEAD
     fetch(`http://localhost:3000/groups/${id}/events`)
+=======
+    fetch(`https://uome-backend.herokuapp.com/groups/${id}/events`)
+>>>>>>> f4ebd3dcef51d9477bb0c161c887c9ba51502c42
     .then((r) => r.json())
     .then(eventArr => {
         setListOfGroupEvents(eventArr)
@@ -65,7 +69,7 @@ function handleDeleteGroup(id){
 
     setGroupDeleteId(id)
 
-    fetch(`http://localhost:4000/groups/${id}`, {
+    fetch(`http://localhost:3000/groups/${id}`, {
         method: "DELETE", 
         headers: {
             "Content-Type": "application/json"

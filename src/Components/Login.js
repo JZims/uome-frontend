@@ -2,6 +2,7 @@
 import React from "react"
 import {Button} from "semantic-ui-react"
 import "../index.css"
+
 function Login({login, setLogin, onHandleSubmit}){
 
     return( 

@@ -120,3 +120,21 @@ margin-top: 250px;
     font-weight: normal;
 
 }
+
+.stappHeader2 {
+  font-family: 'Bangers';
+    color: green;
+    z-index: 5;
+    position: absolute;
+    text-align: left;
+    width: 100%;
+    font-size: 70px;
+    margin-top: -60px;
+    text-shadow: 0 0 2px black, 2px 2px 0px black;
+    transform: rotate(
+-7.5deg
+);
+    margin-left: -20px;
+    font-weight: normal;
+
+}

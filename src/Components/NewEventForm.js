@@ -24,7 +24,7 @@ if(!formData.name){
     return alert("Consider ALL the costs, please.")
 }
 
-fetch("http://localhost:4000/events", {
+fetch("http://localhost:3000/events", {
 method: "POST",
 headers: {
     "Content-Type": "application/json"

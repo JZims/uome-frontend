@@ -13,7 +13,7 @@ const [isAddFavorButtonShowing, setIsAddFavorButtonShowing] = useState(false)
 
 //Fetches group data with events attached according to the groups the users they are associated with
 useEffect(() => {
-    fetch(`http://localhost:4000/groups/${id}/events`)
+    fetch(`http://localhost:3000/groups/${id}/events`)
     .then((r) => r.json())
     .then(eventArr => {
         setListOfGroupEvents(eventArr)
@@ -39,7 +39,7 @@ function handleNewEvent(newEvent){
 
 function handleDeleteEvent(id){
     
-    fetch(`http://localhost:4000/events/${id}`, {
+    fetch(`http://localhost:3000/events/${id}`, {
         method:"DELETE", 
         headers: {
             "Content-Type": "application/JSON"

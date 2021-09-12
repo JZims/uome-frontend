@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React, {useState, useEffect} from "react"
 import StappyHour from "./StappyHour"
 import GroupCard from "./GroupCard"
 import CreateNewGroup from "./CreateNewGroup"
@@ -30,6 +30,19 @@ const userArrayAfterGroupDelete = filterArrayForEmptyObj.filter(groupObj => grou
 
 console.log(userArrayAfterGroupDelete)
 
+// useEffect(() => {
+//     userArrayAfterGroupDelete.map((groupObj) => {
+
+//         return(
+//             <GroupCard 
+//             key={groupObj.id}
+//             name={groupObj.name}
+//             id={groupObj.id}
+//             setGroupDeleteId={setGroupDeleteId}
+//             />
+//         )
+//     })
+// }, [groupDeleteId]) 
 const groupCardArray = userArrayAfterGroupDelete.map((groupObj) => {
 
     return(
@@ -46,8 +59,6 @@ const groupCardArray = userArrayAfterGroupDelete.map((groupObj) => {
     return (
     <div className='groupPage'>
     
-        
-        
         <Switch>
             <Route exact path="/">
             <h3>Hey, {loggedInUser.name}! Time to get that bread!</h3>

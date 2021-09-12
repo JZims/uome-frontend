@@ -48,7 +48,7 @@ const groupCardArray = userArrayAfterGroupDelete.map((groupObj) => {
     return(
         <GroupCard 
         key={groupObj.id}
-        name={groupObj.name}
+        name={groupObj.name} 
         id={groupObj.id}
         setGroupDeleteId={setGroupDeleteId}
         />

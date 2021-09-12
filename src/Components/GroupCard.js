@@ -23,15 +23,13 @@ useEffect(() => {
         },0)
         setTotalOwed(totalBalance)
     })
-},[id] )
+},[id, listOfGroupEvents] )
 
 
 
 function handleNewEvent(newEvent){
     const updatedEventList = [...listOfGroupEvents, newEvent]
     setListOfGroupEvents(updatedEventList)
-
-
     setTotalOwed(totalOwed => parseFloat(totalOwed += newEvent.cost))
 
     
@@ -53,8 +51,8 @@ function handleDeleteEvent(id){
 
     const deletedObj = listOfGroupEvents.find(eventObj => eventObj.id === id)
     const numberToSubtract = deletedObj.cost
-    debugger
-     setTotalOwed(totalOwed - numberToSubtract)
+    
+    setTotalOwed(totalOwed - numberToSubtract)
     console.log(deletedObj)
 
     }
@@ -77,6 +75,12 @@ function handleDeleteGroup(id){
 
 }
 
+function handleAddFavorForm() {
+    return(
+        setIsAddFavorButtonShowing(!isAddFavorButtonShowing)
+    )
+}
+
 // const groupsAfterDelete = 
 const arrayOfEvents = listOfGroupEvents.map((eventObj) => { 
 
@@ -96,11 +100,7 @@ const arrayOfEvents = listOfGroupEvents.map((eventObj) => {
 )
 })
 
-function handleAddFavorForm() {
-    return(
-        setIsAddFavorButtonShowing(!isAddFavorButtonShowing)
-    )
-}
+
 
 
     return (

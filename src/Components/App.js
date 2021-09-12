@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import Login from "./Login"
 import GroupsPage from "./GroupPage"
 import HeaderOfPage from "./Header"
@@ -15,9 +15,6 @@ const [userLogin, setUserLogin] = useState("")
 const [isUserLoggedIn, setIsUserLoggedIn] = useState(false)
 
 
-
-
-
 function handleSubmit(e) {
 
   e.preventDefault()
@@ -32,6 +29,16 @@ fetch(`http://localhost:3000/user?_embed=groups&name=${userLogin}`)
 setIsUserLoggedIn(!isUserLoggedIn)
 
 }
+
+
+// useEffect(() => {
+//   fetch(`http://localhost:3000/user?_embed=groups&name=${userLogin}`)
+//   .then((r) => r.json())
+//   .then(userArray => setLoggedInUser(userArray[0]))
+
+//   setIsUserLoggedIn(!isUserLoggedIn)
+
+// }, [loggedInUser])
 
 
 

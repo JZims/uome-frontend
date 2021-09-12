@@ -12,23 +12,41 @@ import NavBar from "./NavBar"
 function GroupPage({loggedInUser}){
 
 
-const [newGroupObj, setNewGroupObj] = useState({})
-const [groupDeleteId, setGroupDeleteId] = useState(0)
+const [allGroups, setAllGroups] = useState(loggedInUser.groups)
+// const [groupDeleteId, setGroupDeleteId] = useState(0)
 
 
-const userArrayAfterGroupAdd = [...loggedInUser.groups, newGroupObj]
+
+// const userArrayAfterGroupAdd = [...allGroups, newGroupObj]
+
+// const userArrayAfterGroupDelete = userArrayAfterGroupAdd.filter(groupObj => groupObj.id !== groupDeleteId)
+
+// const filterArrayForEmptyObj = userArrayAfterGroupDelete.filter(groupObj => {
+//     if(groupObj.name)
+//         return true 
+//     else return false
+// })
+
+console.log(allGroups)
+
+   
+
+   const groupCardArray =  allGroups.map((groupObj) => {
+
+        return(
+            <GroupCard 
+            key={groupObj.id}
+            name={groupObj.name} 
+            id={groupObj.id}
+            loggedInUser = {loggedInUser}
+            setAllGroups = {setAllGroups}
+            />
+        )
+    })
 
 
-const filterArrayForEmptyObj = userArrayAfterGroupAdd.filter(groupObj => {
-    if(groupObj.name)
-        return true 
-    else return false
-})
 
-const userArrayAfterGroupDelete = filterArrayForEmptyObj.filter(groupObj => groupObj.id !== groupDeleteId)
-
-
-console.log(userArrayAfterGroupDelete)
+// console.log(userArrayAfterGroupDelete)
 
 // useEffect(() => {
 //     userArrayAfterGroupDelete.map((groupObj) => {
@@ -43,17 +61,7 @@ console.log(userArrayAfterGroupDelete)
 //         )
 //     })
 // }, [groupDeleteId]) 
-const groupCardArray = userArrayAfterGroupDelete.map((groupObj) => {
 
-    return(
-        <GroupCard 
-        key={groupObj.id}
-        name={groupObj.name} 
-        id={groupObj.id}
-        setGroupDeleteId={setGroupDeleteId}
-        />
-    )
-})
 
 
     return (
@@ -73,7 +81,7 @@ const groupCardArray = userArrayAfterGroupDelete.map((groupObj) => {
                 <StappyHour/>
             </Route>
             <Route exact path="/addNew">
-                <CreateNewGroup userId={loggedInUser.id} setNewGroupObj= {setNewGroupObj}/>
+                {/* <CreateNewGroup userId={loggedInUser.id} setNewGroupObj= {setNewGroupObj}/> */}
             </Route>
         </Switch>
         <NavBar/>

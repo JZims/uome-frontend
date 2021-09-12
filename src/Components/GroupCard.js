@@ -1,35 +1,34 @@
-import React, {useState, useEffect} from "react"
+import React, {useState, useEffect, useRef} from "react"
 import NewEventForm from "./NewEventForm"
 import "../index.css"
 import {Card, Button, List,} from 'semantic-ui-react'
 
-function GroupCard({name, id, setGroupDeleteId}){
+function GroupCard({name, id, loggedInUser, setAllGroups}){
 
 
 const [totalOwed, setTotalOwed] = useState(0)
-const [listOfGroupEvents, setListOfGroupEvents] = useState([])
 const [isAddFavorButtonShowing, setIsAddFavorButtonShowing] = useState(false)
-
+const listOfGroupEvents = useRef()
 
 //Fetches group data with events attached according to the groups the users they are associated with
 useEffect(() => {
-    fetch(`https://localhost:3000/groups/${id}/events`)
+    fetch(`http://localhost:3000/groups/${id}?_embed=events`)
     // fetch(`https://uome-backend.herokuapp.com/groups/${id}/events`)
     .then((r) => r.json())
-    .then(eventArr => {
-        setListOfGroupEvents(eventArr)
-        const totalBalance = eventArr.reduce((sum, eachEvent) => {
+    .then(groupObj => {
+       listOfGroupEvents.current = groupObj.events
+        const totalBalance = groupObj.events.reduce((sum, eachEvent) => {
             return eachEvent.cost + sum
         },0)
         setTotalOwed(totalBalance)
     })
-},[id, listOfGroupEvents] )
+},[id, loggedInUser] )
 
 
 
 function handleNewEvent(newEvent){
     const updatedEventList = [...listOfGroupEvents, newEvent]
-    setListOfGroupEvents(updatedEventList)
+    listOfGroupEvents.current = updatedEventList
     setTotalOwed(totalOwed => parseFloat(totalOwed += newEvent.cost))
 
     
@@ -45,9 +44,9 @@ function handleDeleteEvent(id){
         }
     })
     
-    const arrayAfterDelete = listOfGroupEvents.filter(eventObj => eventObj.id !== id)
+    const arrayAfterDelete = listOfGroupEvents.current.filter(eventObj => eventObj.id !== id)
 
-    setListOfGroupEvents(arrayAfterDelete)
+    listOfGroupEvents.current = arrayAfterDelete
 
     const deletedObj = listOfGroupEvents.find(eventObj => eventObj.id === id)
     const numberToSubtract = deletedObj.cost
@@ -62,14 +61,15 @@ function handleDeleteEvent(id){
 
 function handleDeleteGroup(id){
 
-    setGroupDeleteId(id)
-
     fetch(`http://localhost:3000/groups/${id}`, {
         method: "DELETE", 
         headers: {
             "Content-Type": "application/json"
         } 
-    })
+    }) 
+    .then(
+        setAllGroups(loggedInUser.groups.filter(obj => obj.id !== id))
+        )
 
    
 
@@ -81,19 +81,17 @@ function handleAddFavorForm() {
     )
 }
 
-// const groupsAfterDelete = 
-const arrayOfEvents = listOfGroupEvents.map((eventObj) => { 
+
+const arrayOfEvents = listOfGroupEvents.current.map((eventObj) => { 
 
     return( 
     <List divided verticalAlign='middle' className="favors">
         <List.Content floated='left'>
-        
-        <List.Header><h3>Favor: {eventObj.name}</h3></List.Header>
-       
-        <p>Charge: ${eventObj.cost}</p>
+            <List.Header><h3>Favor: {eventObj.name}</h3></List.Header>
+            <p>Charge: ${eventObj.cost}</p>
         </List.Content>
         <List.Content floated='right'>
-        <Button className="deleteButton" inverted color='red' onClick={() => handleDeleteEvent(eventObj.id)}>Forgive Debt</Button>
+            <Button className="deleteButton" inverted color='red' onClick={() => handleDeleteEvent(eventObj.id)}>Forgive Debt</Button>
         </List.Content>
     </List>
     

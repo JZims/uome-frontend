@@ -10,13 +10,13 @@ const [number, setNumber] = useState("")
 const newGroupData = {
     name: groupName, 
     userId: userId,
-    number: number
+    groupId: number
 }
 
 function handleNewGroupSubmit(e){
 e.preventDefault()
 
-    fetch(`http://localhost:3000/groups`, {
+    fetch(`https://uome-backend.herokuapp.com/groups`, {
         method:"POST", 
         headers: {
             "Content-Type": "application/JSON"
